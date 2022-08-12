@@ -42,7 +42,7 @@ if (isset($_POST['url'])) {
     $json = json_encode($data);
 
     // Refact code
-    $ch = curl_init('http://localhost/http-parser/HtmlProcessor.php');
+    $ch = curl_init($_SERVER['HTTP_HOST'] . '/http-parser/HtmlProcessor.php');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
     curl_setopt($ch, CURLOPT_HEADER, 0);
