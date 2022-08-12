@@ -51,11 +51,12 @@ if (isset($_POST['url'])) {
     }    
     $result = curl_exec($ch);
     curl_close($ch);
-    $data = json_decode($result)->formatted_text;
-    if (empty($data)) {
+    if ($data = json_decode($result)) {
+        echo $data->formatted_text;
+    } else {
+        echo "Произошла ошибка парсинга";
         http_response_code(500);
+        exit;
     }
-    echo $data;
 }
-
 ?>
